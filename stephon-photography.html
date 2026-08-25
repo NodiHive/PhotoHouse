@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Photo House — Photography</title>
+<title>Stephon — Photography</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Work+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -70,10 +70,6 @@
     margin-top:12px;font-size:1.05rem;font-style:italic;
     font-family:'Newsreader',serif;color:rgba(250,249,246,0.86);
   }
-  .hero-content .hero-byline{
-    margin-top:16px;font-size:0.66rem;letter-spacing:0.1em;
-    color:rgba(250,249,246,0.55);
-  }
   .hero-caption{
     position:absolute;bottom:44px;right:32px;
     text-align:right;font-size:0.66rem;color:rgba(250,249,246,0.7);
@@ -115,13 +111,6 @@
   }
   .tile:hover img{transform:scale(1.045);}
   .tile.mono img{filter:grayscale(1) contrast(1.05);}
-  .tile.featured{outline:2px solid var(--red);outline-offset:-2px;}
-  .featured-badge{
-    position:absolute;top:12px;left:12px;z-index:2;
-    background:var(--red);color:var(--paper);
-    font-family:'JetBrains Mono',monospace;font-size:0.62rem;letter-spacing:0.05em;
-    text-transform:uppercase;padding:5px 10px;border-radius:3px;
-  }
   .tile-overlay{
     position:absolute;inset:0;
     background:linear-gradient(180deg, transparent 55%, rgba(15,14,12,0.72) 100%);
@@ -211,7 +200,7 @@
 
 <nav class="nav">
   <div class="nav-inner">
-    <div class="nav-mark">Photo House</div>
+    <div class="nav-mark">Stephon</div>
     <div class="nav-links">
       <a href="#work">Work</a>
       <a href="#history">History of Light</a>
@@ -220,14 +209,13 @@
 </nav>
 
 <header class="hero">
-  <img src="images/franklin-facade.jpg" alt="The Franklin Institute, Philadelphia">
+  <img src="https://picsum.photos/seed/stephon-hero/1600/1100" alt="">
   <div class="hero-scrim"></div>
   <div class="hero-content">
-    <h1>Photo House</h1>
+    <h1>Stephon</h1>
     <div class="tagline">Frames, light, and everything in between.</div>
-    <div class="hero-byline mono">PHOTOGRAPHY BY STEPHON</div>
   </div>
-
+  <div class="hero-caption mono">PLACEHOLDER FRAME — TO BE REPLACED</div>
 </header>
 
 <section id="work">
@@ -243,7 +231,6 @@
         <button class="filter-pill" data-filter="landscape">Landscape</button>
         <button class="filter-pill" data-filter="portrait">Portrait</button>
         <button class="filter-pill" data-filter="street">Street</button>
-        <button class="filter-pill" data-filter="detail">Detail</button>
         <button class="filter-pill" data-filter="mono">Mono</button>
       </div>
     </div>
@@ -274,8 +261,8 @@
 </section>
 
 <footer>
-  <div class="nav-mark">Photo House</div>
-  <p>A photography journal by Stephon, built one frame at a time.</p>
+  <div class="nav-mark">Stephon</div>
+  <p>A photography journal, built one frame at a time.</p>
 </footer>
 
 <div class="lightbox" id="lightbox">
@@ -285,30 +272,35 @@
   <div class="lightbox-inner">
     <img id="lb-img" src="" alt="">
     <div class="lightbox-caption mono" id="lb-caption"></div>
-
+    <div class="lightbox-note">Sample data shown — replace with real EXIF once photos are added.</div>
   </div>
 </div>
 
 <script>
-  // ---------------- Gallery data (Stephon's real photos) ----------------
+  // ---------------- Gallery data (placeholder images) ----------------
   const photos = [
-    { file:'images/franklin-facade.jpg',  cat:'street',   title:'The Franklin Institute', note:'Philadelphia, PA', featured:true },
-    { file:'images/giant-heart.jpg',      cat:'detail',   title:'The Giant Heart', note:'Franklin Institute exhibit', featured:true },
-    { file:'images/em-waves-hall.jpg',    cat:'street',   title:'Shielding Planets from the Sun', note:'Franklin Institute exhibit hall', featured:false },
-    { file:'images/immersive-room.jpg',   cat:'portrait', note:'Immersive art installation', title:'Between the Walls', featured:false },
-    { file:'images/night-ride.jpg',       cat:'street',   title:'After Dark', note:'Low light, in motion', featured:false },
+    { seed:'frame-01', w:700, h:900,  cat:'landscape', aperture:'f/8',   shutter:'1/125', iso:'100' },
+    { seed:'frame-02', w:700, h:820,  cat:'portrait',  aperture:'f/1.8', shutter:'1/250', iso:'200' },
+    { seed:'frame-03', w:700, h:1000, cat:'street',    aperture:'f/4',   shutter:'1/500', iso:'400' },
+    { seed:'frame-04', w:700, h:760,  cat:'mono',      aperture:'f/5.6', shutter:'1/250', iso:'320' },
+    { seed:'frame-05', w:700, h:880,  cat:'landscape', aperture:'f/11',  shutter:'1/60',  iso:'100' },
+    { seed:'frame-06', w:700, h:940,  cat:'portrait',  aperture:'f/2',   shutter:'1/200', iso:'160' },
+    { seed:'frame-07', w:700, h:800,  cat:'street',    aperture:'f/5.6', shutter:'1/320', iso:'400' },
+    { seed:'frame-08', w:700, h:1020, cat:'mono',      aperture:'f/8',   shutter:'1/125', iso:'200' },
+    { seed:'frame-09', w:700, h:860,  cat:'landscape', aperture:'f/9',   shutter:'1/90',  iso:'100' },
+    { seed:'frame-10', w:700, h:780,  cat:'portrait',  aperture:'f/2.2', shutter:'1/250', iso:'250' },
   ];
 
   const gallery = document.getElementById('gallery');
   photos.forEach((p, i) => {
+    const url = `https://picsum.photos/seed/${p.seed}/${p.w}/${p.h}`;
     const tile = document.createElement('div');
-    tile.className = 'tile' + (p.cat === 'mono' ? ' mono' : '') + (p.featured ? ' featured' : '');
+    tile.className = 'tile' + (p.cat === 'mono' ? ' mono' : '');
     tile.dataset.cat = p.cat;
     tile.dataset.index = i;
     tile.innerHTML = `
-      ${p.featured ? '<div class="featured-badge mono">Featured</div>' : ''}
-      <img src="${p.file}" alt="${p.title}" loading="lazy">
-      <div class="tile-overlay"><span>${p.title.toUpperCase()} — ${p.note}</span></div>
+      <img src="${url}" alt="Placeholder photograph, category: ${p.cat}" loading="lazy">
+      <div class="tile-overlay"><span>${p.cat.toUpperCase()} — ${p.aperture} · ${p.shutter}s · ISO ${p.iso}</span></div>
     `;
     tile.addEventListener('click', () => openLightbox(i));
     gallery.appendChild(tile);
@@ -364,8 +356,8 @@
   }
   function renderLightbox() {
     const p = photos[currentIndex];
-    lbImg.src = p.file;
-    lbCaption.textContent = `${p.title} — ${p.note}`;
+    lbImg.src = `https://picsum.photos/seed/${p.seed}/${p.w*2}/${p.h*2}`;
+    lbCaption.textContent = `${p.cat.toUpperCase()} — ${p.aperture} · ${p.shutter}s · ISO ${p.iso}`;
   }
   function closeLightbox() { lightbox.classList.remove('open'); }
   function nextPhoto() { currentIndex = (currentIndex + 1) % photos.length; renderLightbox(); }
